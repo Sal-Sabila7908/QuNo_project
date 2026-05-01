@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FindDoctor</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div id="loginPage" class="login-page">
+<div class="login-box">
+<h2> MediCare</h2>
+
+<input type="name" id="name" placeholder="Enter your name:">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<button class="btn green" onclick="login()">Login</button>
+
+</div>
+</div>
+
+<div id="mainApp" class="app">
+
+<div class="navbar">
+<div class="nav-brand">MediCare</div>
+
+<input type="text" id="searchInput"
+class="search-bar"
+placeholder="Search doctor..."
+onkeydown="filterDoctors()">
+
+<button onclick="logout()" class="logout">Logout</button>
+</div>
+<!--login korar por ei page-->
+<div class="doctors-container">
+<h2>Available Doctors</h2>
+<div id="doctorsGrid" class="doctors-grid"></div>
+</div>
+
+</div>
+<!--appointment neyar jonno ei page-->
+<div id="appointmentModal" class="modal">
+<div class="modal-content">
+
+<h3 id="modalDoctorName"></h3>
+
+<p id="modalSpecialty"></p>
+<p id="modalHospital"></p>
+
+<input type="date" id="apptDate">
+
+<select id="apptTime">
+<option>09:00 AM</option>
+<option>11:00 AM</option>
+<option>02:00 PM</option>
+</select>
+
+<button class="btn green" onclick="confirmBooking()">Confirm</button>
+
+<button class="btn" onclick="closeModal()">Cancel</button>
+
+</div>
+</div>
+
+<!-- NEW: Rating-->
+<div id="ratingModal" class="modal">
+<div class="modal-content">
+<h3>Rate Doctor: <span id="ratingDoctorName"></span></h3>
+
+<div class="stars-container">
+<p>Your Rating:</p>
+<div class="star-rating">
+<i class="far fa-star" data-rating="1" onclick="setRating(1)"></i>
+<i class="far fa-star" data-rating="2" onclick="setRating(2)"></i>
+<i class="far fa-star" data-rating="3" onclick="setRating(3)"></i>
+<i class="far fa-star" data-rating="4" onclick="setRating(4)"></i>
+<i class="far fa-star" data-rating="5" onclick="setRating(5)"></i>
+</div>
+<input type="hidden" id="selectedRating" value="0">
+</div>
+<!--comment-->
+<div class="comment-section">
+<p>Your Comment:</p>
+<textarea id="commentText" rows="3" placeholder="Write your experience with this doctor..."></textarea>
+</div>
+
+<button class="btn green" onclick="submitRating()">Submit Review</button>
+<button class="btn" onclick="closeRatingModal()">Cancel</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
